@@ -14,7 +14,7 @@ import util.DateUtil;
  *
  * @author PC-Jose
  */
-public class EditarPersonaDialogControl {
+public class NuevaPersonaDialogController {
     @FXML
     private TextField nombreField;
     @FXML
@@ -72,32 +72,30 @@ public class EditarPersonaDialogControl {
     private void handleOk() {        
         if (isInputValid()) {
             String nombre = nombreField.getText();
-            String apellido = apellidoField.getText();
+            String apelldo = apellidoField.getText();
             String calle = calleField.getText();
             Integer codigoPostal = Integer.valueOf(codigoPostalField.getText());
-            String ciudad = cuidadField.getText();
+            String cuidad = cuidadField.getText();
             LocalDate cumpleaños = DateUtil.parse(cumpleañosField.getText()); 
-
-            jpaPersona jpa = new jpaPersona();
-            Persona persona = new Persona(nombre, apellido, calle, codigoPostal , ciudad, cumpleaños);
-
-            jpa.editarPersona(persona);
-
-            System.out.println("Persona editada correctamente.");
-
+            // Mostrar mensaje de estudiante matriculado
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Persona Editada");
+            alert.setTitle("Persona Agregada");
             alert.setHeaderText(null);
-            alert.setContentText("La información de la persona ha sido actualizada en la agenda.");
+            alert.setContentText("La persona fue agregada a la agenda.");
 
             alert.showAndWait();
+
+            jpaPersona jpa = new jpaPersona();
+            Persona persona = new Persona(nombre, apelldo, calle, codigoPostal , cuidad, cumpleaños);
+            jpa.insertarPersonas(persona);                  
+            System.out.println("Persona insertado correctamente.");             
         }
         nombreField.setText(" ");
         apellidoField.setText(" ");
         calleField.setText(" ");
         codigoPostalField.setText(" ");
         cuidadField.setText(" ");
-        cumpleañosField.setText(" ");        
+        cumpleañosField.setText(" ");
     }
     /**
      * Se llama cuando el usuario hace clic en cancelar.

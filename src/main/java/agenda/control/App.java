@@ -22,28 +22,6 @@ public class App extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     
-    private ObservableList<Persona> personaDatos = FXCollections.observableArrayList();
-    
-    public App(){
-        //Agregar algunos simples datos        
-        personaDatos.add(new Persona("Hans", "Muster"));
-        personaDatos.add(new Persona("Ruth", "Mueller"));
-        personaDatos.add(new Persona("Heinz", "Kurz"));
-        personaDatos.add(new Persona("Cornelia", "Meier"));
-        personaDatos.add(new Persona("Werner", "Meyer"));
-        personaDatos.add(new Persona("Lydia", "Kunz"));
-        personaDatos.add(new Persona("Anna", "Best"));
-        personaDatos.add(new Persona("Stefan", "Meier"));
-        personaDatos.add(new Persona("Martin", "Mueller"));        
-    }
-    
-    /**
-     * Devuelve los datos como una lista observable de Personas.
-     * @return
-     */
-    public ObservableList<Persona> getPersonaDatos(){
-        return personaDatos;
-    }    
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -120,17 +98,14 @@ public class App extends Application {
             // cargar persona overview
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("/agenda/vista/PersonaOverview.fxml"));
-            AnchorPane personaOverview = (AnchorPane) loader.load();
+            AnchorPane Estudiantes = (AnchorPane) loader.load();
             
             //Colocar persona overview dentro en el centro de root layout
-            rootLayout.setCenter(personaOverview);
-            // Dar acceso al controlador a la app.
-            PersonaOverviewControl controlador = loader.getController();
-            controlador.setApp(this);
+            rootLayout.setCenter(Estudiantes);
             
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }      
     }    
     /**
      * Returns the main stage
