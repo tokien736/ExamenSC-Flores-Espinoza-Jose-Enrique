@@ -81,7 +81,7 @@ public class EditarPersonaDialogControl {
             jpaPersona jpa = new jpaPersona();
             Persona persona = new Persona(nombre, apellido, calle, codigoPostal , ciudad, cumpleaños);
 
-            jpa.editarPersona(persona);
+            jpa.insertarPersonas(persona);
 
             System.out.println("Persona editada correctamente.");
 

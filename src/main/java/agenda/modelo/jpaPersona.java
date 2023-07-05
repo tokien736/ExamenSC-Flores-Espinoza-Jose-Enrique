@@ -93,38 +93,6 @@ public class jpaPersona {
     }
 
 
-    public void editarPersona(Persona persona) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = null;
-        try {
-            tx = em.getTransaction();
-            tx.begin();
-
-            // Buscar la persona en la base de datos utilizando su ID
-            Persona personaExistente = em.find(Persona.class, persona.getIdPersona());
-
-            if (personaExistente != null) {
-                // Actualizar los datos de la persona existente con los nuevos datos
-                personaExistente.setNombre(persona.getNombre());
-                personaExistente.setApellido(persona.getApellido());
-                personaExistente.setCalle(persona.getCalle());
-                personaExistente.setCodigoPostal(persona.getCodigoPostal());
-                personaExistente.setCuidad(persona.getCuidad());
-                personaExistente.setCumpleaños(persona.getCumpleaños());
-            }
-
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-   
-
     public void eliminarPersona(Persona persona) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = null;

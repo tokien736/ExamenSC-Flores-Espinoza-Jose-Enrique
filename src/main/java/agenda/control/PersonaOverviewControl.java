@@ -99,18 +99,18 @@ public class PersonaOverviewControl {
     @FXML
     private void handleNuevaPersona(ActionEvent event) {
        try {
-            // Cargar el archivo FXML
+           
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/agenda/vista/NuevaPersonaDialog.fxml"));
             Parent root = loader.load();
 
-            // Crear una nueva escena
+           
             Scene scene = new Scene(root);
 
-            // Crear una nueva ventana
+           
             Stage newStage = new Stage();
             newStage.setScene(scene);
 
-            // Mostrar la nueva ventana
+            
             newStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -182,7 +182,7 @@ public class PersonaOverviewControl {
                 
                 controlador.eliminarPersona(seleccionada);
 
-                // Actualizar la tabla de personas
+                
                 cargarDatosPersona();
             }
         } else {
